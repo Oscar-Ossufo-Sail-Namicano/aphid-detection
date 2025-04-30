@@ -1,0 +1,63 @@
+ScreenManager:
+    MainScreen:
+        name: 'main_screen'
+    VideoDetectionScreen:
+        name: 'video_detection_screen'
+    ImageDetectionScreen:
+        name: 'image_detection_screen'
+    RealTimeScreen:
+        name: 'real_time_screen'
+
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'Detecção de Objetos'
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(40)
+            spacing: dp(20)
+            MDRaisedButton:
+                text: 'Carregar Vídeo'
+                on_press: root.show_file_manager('video')
+            MDRaisedButton:
+                text: 'Carregar Imagem'
+                on_press: root.show_file_manager('image')
+            MDRaisedButton:
+                text: 'Detecção em Tempo Real'
+                on_press: root.real_time_detection()
+
+<VideoDetectionScreen>:
+    video_image: video_image
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'Detecção de Vídeo'
+            left_action_items: [["arrow-left", lambda x: root.go_back_to_main()]]
+        Image:
+            id: video_image
+            size_hint: 1, None
+            height: root.width * (9/16) # Proporção 16:9
+        MDRaisedButton:
+            text: 'Parar Vídeo'
+            on_press: root.manager.current_screen.stop_video()
+
+<ImageDetectionScreen>:
+    image_display: image_display
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'Detecção de Imagem'
+            left_action_items: [["arrow-left", lambda x: root.go_back_to_main()]]
+        Image:
+            id: image_display
+            size_hint: 1, None
+            height: root.width * (9/16) # Proporção 16:9
+        MDRaisedButton:
+            text: 'Voltar'
+            on_press: root.manager.current_screen.go_back()
+
+<RealTimeScreen>:
+    real_time_image: real_time_image
+    Image:
+        id: real_time_image
