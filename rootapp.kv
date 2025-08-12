@@ -12,20 +12,37 @@ ScreenManager:
     BoxLayout:
         orientation: 'vertical'
         MDTopAppBar:
-            title: 'Detecção de Objetos'
+            title: 'Detecção de Afideos'
+
         MDBoxLayout:
-            orientation: 'vertical'
-            padding: dp(40)
-            spacing: dp(20)
-            MDRaisedButton:
-                text: 'Carregar Vídeo'
-                on_press: root.show_file_manager('video')
-            MDRaisedButton:
-                text: 'Carregar Imagem'
-                on_press: root.show_file_manager('image')
-            MDRaisedButton:
-                text: 'Detecção em Tempo Real'
-                on_press: root.real_time_detection()
+            orientation: "vertical"
+            Label:
+                text: "Trabalho de culminação de curso:\nAnálise da eficiência e aplicabilidade do protótipo de um sistema de detecção automática de Afídeos."
+                halign: 'center'
+                valign: 'middle'
+                color: 0.2, 0.2, 0.2, 1  # Cinza escuro, melhor contraste
+                font_size: '20sp'        # Tamanho de fonte mais legível
+                text_size: self.width * 0.9, None  # Controla a largura do texto para quebra automática
+                #size_hint_y: None
+                #height: self.texture_size[1] + dp(10)  # Ajusta altura de acordo com o texto
+
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: dp(40)
+                spacing: dp(20)
+                MDRaisedButton:
+                    text: 'Carregar Vídeo'
+                    on_press: root.show_file_manager('video')
+                MDRaisedButton:
+                    text: 'Carregar Imagem'
+                    on_press: root.show_file_manager('image')
+                MDRaisedButton:
+                    text: 'Carregar Pasta de Imagens'
+                    on_press: root.show_folder_manager()
+                MDRaisedButton:
+                    text: 'Detecção em Tempo Real'
+                    on_press: root.real_time_detection()
 
 <VideoDetectionScreen>:
     video_image: video_image
@@ -38,9 +55,16 @@ ScreenManager:
             id: video_image
             size_hint: 1, None
             height: root.width * (9/16) # Proporção 16:9
-        MDRaisedButton:
-            text: 'Parar Vídeo'
-            on_press: root.manager.current_screen.stop_video()
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(10)
+            spacing: dp(10)
+            MDRaisedButton:
+                text: 'Parar Vídeo'
+                on_press: root.go_back_to_main()
+            MDRaisedButton:
+                text: 'Relatório'
+                on_press: root.generate_report()
 
 <ImageDetectionScreen>:
     image_display: image_display
@@ -48,16 +72,40 @@ ScreenManager:
         orientation: 'vertical'
         MDTopAppBar:
             title: 'Detecção de Imagem'
-            left_action_items: [["arrow-left", lambda x: root.go_back_to_main()]]
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
         Image:
             id: image_display
             size_hint: 1, None
             height: root.width * (9/16) # Proporção 16:9
-        MDRaisedButton:
-            text: 'Voltar'
-            on_press: root.manager.current_screen.go_back()
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(10)
+            spacing: dp(10)
+            MDRaisedButton:
+                text: 'Voltar'
+                on_press: root.go_back()
+            MDRaisedButton:
+                text: 'Relatório'
+                on_press: root.generate_report()
 
 <RealTimeScreen>:
     real_time_image: real_time_image
-    Image:
-        id: real_time_image
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'Detecção em Tempo Real'
+            left_action_items: [["arrow-left", lambda x: root.go_back_to_main()]]
+        Image:
+            id: real_time_image
+            size_hint: 1, None
+            height: root.width * (9/16)
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(10)
+            spacing: dp(10)
+            MDRaisedButton:
+                text: 'Voltar'
+                on_press: root.go_back_to_main()
+            MDRaisedButton:
+                text: 'Relatório'
+                on_press: root.generate_report()
