@@ -1,0 +1,6 @@
+Este aplicativo utiliza inteligência artificial para detectar afídeos em culturas agrícolas a partir de imagens capturadas por drones ou cameras.
+Auxilia agricultores a identificar infestações rapidamente e proteger suas plantações.
+
+Na verdade, trata-se de um prototipo que pde ser melhorado.
+
+Oscar Namicano
