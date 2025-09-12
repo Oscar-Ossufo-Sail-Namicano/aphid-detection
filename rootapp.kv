@@ -17,7 +17,7 @@ ScreenManager:
         MDBoxLayout:
             orientation: "vertical"
             Label:
-                text: "Trabalho de culminação de curso:\nAnálise da eficiência e aplicabilidade do protótipo de um sistema de detecção automática de Afídeos."
+                text: "TRABALHO DE CULMINAÇÃO DE CURSO:\n\nAnálise da eficiência e aplicabilidade do protótipo de um sistema de detecção automática de Afídeos.\n\nUNIROVUMA - ISDRB"
                 halign: 'center'
                 valign: 'middle'
                 color: 0.2, 0.2, 0.2, 1  # Cinza escuro, melhor contraste
@@ -28,22 +28,44 @@ ScreenManager:
 
 
             MDBoxLayout:
-                orientation: 'vertical'
-                padding: dp(40)
-                spacing: dp(20)
-                MDRaisedButton:
-                    text: 'Carregar Vídeo'
-                    on_press: root.show_file_manager('video')
-                MDRaisedButton:
-                    text: 'Carregar Imagem'
-                    on_press: root.show_file_manager('image')
-                MDRaisedButton:
-                    text: 'Carregar Pasta de Imagens'
-                    on_press: root.show_folder_manager()
-                MDRaisedButton:
-                    text: 'Detecção em Tempo Real'
-                    on_press: root.real_time_detection()
-
+                # Bottom general container
+                MDBoxLayout:
+                    # Left container
+                    orientation: 'vertical'
+                    padding: dp(40)
+                    spacing: dp(20)
+                    MDRaisedButton:
+                        text: 'Carregar Vídeo'
+                        on_press: root.show_file_manager('video')
+                    MDRaisedButton:
+                        text: 'Carregar Imagem'
+                        on_press: root.show_file_manager('image')
+                    MDRaisedButton:
+                        text: 'Carregar Pasta de Imagens'
+                        on_press: root.show_folder_manager()
+                    MDRaisedButton:
+                        text: 'Detecção em Tempo Real'
+                        on_press: root.real_time_detection()
+                
+                MDBoxLayout:
+                    # Right container
+                    orientation: "vertical"
+                    Widget:
+                        size_hint_y: .8
+                    Label:
+                        text: "ESTUDANTE:\n               Oscar Namicano"
+                        color: 0.2, 0.2, 0.2, 1  # Cinza escuro, melhor contraste
+                        font_size: '20sp'
+                        text_size: 300, None,
+                        halign: "left"
+                    Label:
+                        text: "SUPERVISORES:\n                Luís J. Matavela\n                Virgínia Souza"
+                        color: 0.2, 0.2, 0.2, 1  # Cinza escuro, melhor contraste
+                        font_size: '20sp'
+                        text_size: 300, None,
+                        halign: "left"
+                    Widget:
+                        size_hint_y: .8
 <VideoDetectionScreen>:
     video_image: video_image
     BoxLayout:

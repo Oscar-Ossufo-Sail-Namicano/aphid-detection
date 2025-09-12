@@ -1,0 +1,168 @@
+Relatório de Análise - Protótipo Detecção de Afídeos (2x2)
+
+Resumo descritivo por Condição × Período:
+
+| Condição      | Período   |   Acurácia_mean |   Acurácia_std |   Acurácia_count |   Precisão_mean |   Precisão_std |   Precisão_count |   Recall_mean |   Recall_std |   Recall_count |   F1_mean |   F1_std |   F1_count |
+|---------------|-----------|-----------------|----------------|------------------|-----------------|----------------|------------------|---------------|--------------|----------------|-----------|----------|------------|
+| Antes da Rega | Manhã     |        0.740303 |       0.218411 |               10 |        0.825    |       0.237171 |               10 |      0.755303 |     0.212783 |             10 |  0.784449 | 0.214754 |         10 |
+| Antes da Rega | Tarde     |        0.749179 |       0.313133 |               10 |        0.9      |       0.210819 |               10 |      0.749179 |     0.313133 |             10 |  0.791878 | 0.317621 |         10 |
+| Após a Rega   | Manhã     |        0.816667 |       0.183417 |               10 |        0.940909 |       0.157532 |               10 |      0.824242 |     0.185732 |             10 |  0.871818 | 0.157135 |         10 |
+| Após a Rega   | Tarde     |        0.663333 |       0.312477 |               10 |        0.75     |       0.353553 |               10 |      0.713333 |     0.22122  |             10 |  0.698889 | 0.322433 |         10 |
+
+
+
+Gráfico salvo: resultados_analise_final\bar_Acurácia.png
+
+Gráfico salvo: resultados_analise_final\box_Acurácia.png
+
+Gráfico salvo: resultados_analise_final\bar_Precisão.png
+
+Gráfico salvo: resultados_analise_final\box_Precisão.png
+
+Gráfico salvo: resultados_analise_final\bar_Recall.png
+
+Gráfico salvo: resultados_analise_final\box_Recall.png
+
+Gráfico salvo: resultados_analise_final\bar_F1.png
+
+Gráfico salvo: resultados_analise_final\box_F1.png
+
+
+Resultados dos testes estatísticos (ANOVA 2 vias):
+
+
+--- Métrica: Acurácia ---
+
+ANOVA (type II):
+
+| index                  |     sum_sq |   df |            F |     PR(>F) |
+|------------------------|------------|------|--------------|------------|
+| C(Condição)            | 0.00022476 |    1 |   0.00324517 |   0.954887 |
+| C(Período)             | 0.05217    |    1 |   0.753251   |   0.391198 |
+| C(Condição):C(Período) | 0.0657794  |    1 |   0.949749   |   0.336287 |
+| Residual               | 2.49335    |   36 | nan          | nan        |
+
+
+Checagem de pressupostos:
+
+  - Normalidade dos resíduos (Shapiro): stat=0.9130042422758967, p=0.004672023358623889
+
+  - Homogeneidade de variâncias (Levene, center=median): stat=0.36609804424954073, p=0.7778730241981746
+
+  -> Resíduos NÃO seguem normalidade (p < 0.05).
+
+  -> Variâncias parecem homogêneas (p >= 0.05) ou teste não aplicável.
+
+
+Alternativa não-paramétrica aplicada: Scheirer–Ray–Hare (SRH)
+
+  A: H=0.0007, df=1, p=0.9783 -> p >= 0.05 (não significativo)
+
+  B: H=0.2670, df=1, p=0.6053 -> p >= 0.05 (não significativo)
+
+  A:B: H=1.1835, df=1, p=0.2766 -> p >= 0.05 (não significativo)
+
+
+
+
+--- Métrica: Precisão ---
+
+ANOVA (type II):
+
+| index                  |     sum_sq |   df |           F |     PR(>F) |
+|------------------------|------------|------|-------------|------------|
+| C(Condição)            | 0.00290548 |    1 |   0.0463928 |   0.830679 |
+| C(Período)             | 0.0335873  |    1 |   0.536301  |   0.468711 |
+| C(Condição):C(Período) | 0.176769   |    1 |   2.82254   |   0.101608 |
+| Residual               | 2.2546     |   36 | nan         | nan        |
+
+
+Checagem de pressupostos:
+
+  - Normalidade dos resíduos (Shapiro): stat=0.8353402802425931, p=4.04229297703115e-05
+
+  - Homogeneidade de variâncias (Levene, center=median): stat=1.135077550459346, p=0.3479207939753993
+
+  -> Resíduos NÃO seguem normalidade (p < 0.05).
+
+  -> Variâncias parecem homogêneas (p >= 0.05) ou teste não aplicável.
+
+
+Alternativa não-paramétrica aplicada: Scheirer–Ray–Hare (SRH)
+
+  A: H=0.0044, df=1, p=0.9469 -> p >= 0.05 (não significativo)
+
+  B: H=0.0711, df=1, p=0.7898 -> p >= 0.05 (não significativo)
+
+  A:B: H=2.1494, df=1, p=0.1426 -> p >= 0.05 (não significativo)
+
+
+
+
+--- Métrica: Recall ---
+
+ANOVA (type II):
+
+| index                  |     sum_sq |   df |           F |     PR(>F) |
+|------------------------|------------|------|-------------|------------|
+| C(Condição)            | 0.00273803 |    1 |   0.0482976 |   0.827294 |
+| C(Período)             | 0.034242   |    1 |   0.604013  |   0.442128 |
+| C(Condição):C(Período) | 0.0274496  |    1 |   0.484199  |   0.490995 |
+| Residual               | 2.04087    |   36 | nan         | nan        |
+
+
+Checagem de pressupostos:
+
+  - Normalidade dos resíduos (Shapiro): stat=0.9075229742920691, p=0.0031880479089562946
+
+  - Homogeneidade de variâncias (Levene, center=median): stat=0.17036082276522233, p=0.9157059060643523
+
+  -> Resíduos NÃO seguem normalidade (p < 0.05).
+
+  -> Variâncias parecem homogêneas (p >= 0.05) ou teste não aplicável.
+
+
+Alternativa não-paramétrica aplicada: Scheirer–Ray–Hare (SRH)
+
+  A: H=0.0000, df=1, p=1.0000 -> p >= 0.05 (não significativo)
+
+  B: H=0.4256, df=1, p=0.5142 -> p >= 0.05 (não significativo)
+
+  A:B: H=0.8541, df=1, p=0.3554 -> p >= 0.05 (não significativo)
+
+
+
+
+--- Métrica: F1 ---
+
+ANOVA (type II):
+
+| index                  |      sum_sq |   df |           F |     PR(>F) |
+|------------------------|-------------|------|-------------|------------|
+| C(Condição)            | 7.89412e-05 |    1 |   0.0011455 |   0.973188 |
+| C(Período)             | 0.0684758   |    1 |   0.993637  |   0.325508 |
+| C(Condição):C(Período) | 0.0813229   |    1 |   1.18006   |   0.284564 |
+| Residual               | 2.48091     |   36 | nan         | nan        |
+
+
+Checagem de pressupostos:
+
+  - Normalidade dos resíduos (Shapiro): stat=0.8686524071412292, p=0.00026393031075202324
+
+  - Homogeneidade de variâncias (Levene, center=median): stat=0.6832186400728403, p=0.5681267375069643
+
+  -> Resíduos NÃO seguem normalidade (p < 0.05).
+
+  -> Variâncias parecem homogêneas (p >= 0.05) ou teste não aplicável.
+
+
+Alternativa não-paramétrica aplicada: Scheirer–Ray–Hare (SRH)
+
+  A: H=0.0007, df=1, p=0.9783 -> p >= 0.05 (não significativo)
+
+  B: H=0.2670, df=1, p=0.6053 -> p >= 0.05 (não significativo)
+
+  A:B: H=1.1835, df=1, p=0.2766 -> p >= 0.05 (não significativo)
+
+
+
